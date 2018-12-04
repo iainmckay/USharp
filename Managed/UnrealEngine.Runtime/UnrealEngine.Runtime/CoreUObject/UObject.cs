@@ -647,13 +647,8 @@ namespace UnrealEngine.Runtime
         /// <summary>
         /// Returns properties that are replicated for the lifetime of the actor channel
         /// </summary>
-        public void GetLifetimeReplicatedProps(List<FLifetimeProperty> lifetimeProps)
+        public virtual void GetLifetimeReplicatedProps(LifetimePropertyRegistry registry)
         {
-            using (TArrayUnsafe<FLifetimeProperty> resultUnsafe = new TArrayUnsafe<FLifetimeProperty>())
-            {
-                Native_UObject.GetLifetimeReplicatedProps(Address, resultUnsafe.Address);
-                lifetimeProps.AddRange(resultUnsafe);
-            }
         }
 
         internal virtual void SetupPlayerInputComponent(IntPtr playerInputComponent)
